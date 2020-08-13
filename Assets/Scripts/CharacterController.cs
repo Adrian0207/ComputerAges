@@ -67,7 +67,7 @@ public class CharacterController : MonoBehaviour
 		_playerLayer = this.gameObject.layer;
 
 		//determine the plataform;s specified layer
-		_playerLayer = LayerMask.NameToLayer("Platform");
+		_platformLayer = LayerMask.NameToLayer("Platform");
 	}
 
 	void Update()
