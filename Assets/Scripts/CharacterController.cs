@@ -127,7 +127,32 @@ public class CharacterController : MonoBehaviour
 		Physics2D.IgnoreLayerCollision(_playerLayer, _platformLayer, (_vy > 0.0f));
 	}
 
-	void DoJump()
+    void LateUpdate()
+    {
+		// get the current scale
+		Vector3 localScale = _transform.localScale;
+
+		if (_vx > 0) // moving right so face right
+		{
+			_isFacingRight = true;
+		}
+		else if (_vx < 0)// moving left so face left
+		{ 
+			_isFacingRight = false;
+		}
+
+		// check to see if scale x is right for the player
+		// if not, multiple by -1 which is an easy way to flip a sprite
+		if (((_isFacingRight) && (localScale.x < 0)) || ((!_isFacingRight) && (localScale.x > 0)))
+		{
+			localScale.x *= -1;
+		}
+
+		// update the scale
+		_transform.localScale = localScale;
+	}
+
+    void DoJump()
 	{
 		//Reset current vertical motion to 0 prior to jump
 		_vy = 0f;
