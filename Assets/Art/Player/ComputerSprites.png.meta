@@ -17,6 +17,9 @@ TextureImporter:
   - first:
       213: -2441577034823923586
     second: ComputerSprites_4
+  - first:
+      213: 727037597019327987
+    second: ComputerSprites_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -130,7 +133,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 512
+        y: 640
         width: 128
         height: 128
       alignment: 0
@@ -151,7 +154,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 384
+        y: 512
         width: 128
         height: 128
       alignment: 0
@@ -172,7 +175,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
+        y: 384
         width: 128
         height: 128
       alignment: 0
@@ -193,7 +196,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
+        y: 256
         width: 128
         height: 128
       alignment: 0
@@ -214,7 +217,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 128
         width: 128
         height: 128
       alignment: 0
@@ -226,6 +229,27 @@ TextureImporter:
       bones: []
       spriteID: e7881937f96cd1ed0800000000000000
       internalID: -2441577034823923586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComputerSprites_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fdc0bca7d4f61a00800000000000000
+      internalID: 727037597019327987
       vertices: []
       indices: 
       edges: []
