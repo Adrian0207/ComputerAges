@@ -19,11 +19,11 @@ public class GameManager : MonoBehaviour
 	public int lives = 3;
 
 	// UI elements to control
-	public Text UIScore;
+	/*public Text UIScore;
 	public Text UIHighScore;
 	public Text UILevel;
 	public GameObject[] UIExtraLives;
-	public GameObject UIGamePaused;
+	public GameObject UIGamePaused;*/
 
 	// private variables
 	GameObject _player;
@@ -49,13 +49,13 @@ public class GameManager : MonoBehaviour
 		{
 			if (Time.timeScale > 0f)
 			{
-				UIGamePaused.SetActive(true); // this brings up the pause UI
+				//UIGamePaused.SetActive(true); // this brings up the pause UI
 				Time.timeScale = 0f; // this pauses the game action
 			}
 			else
 			{
 				Time.timeScale = 1f; // this unpauses the game action (ie. back to normal)
-				UIGamePaused.SetActive(false); // remove the pause UI
+				//UIGamePaused.SetActive(false); // remove the pause UI
 			}
 		}
 	}
@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
 			Debug.LogWarning("levelAfterGameOver not specified, defaulted to current level");
 			levelAfterGameOver = _scene.name;
 		}
-
+		/*
 		// friendly error messages
 		if (UIScore == null)
 			Debug.LogError("Need to set UIScore on Game Manager.");
@@ -101,12 +101,12 @@ public class GameManager : MonoBehaviour
 
 		if (UIGamePaused == null)
 			Debug.LogError("Need to set UIGamePaused on Game Manager.");
-
+		*/
 		// get stored player prefs
 		refreshPlayerState();
 
 		// get the UI ready for the game
-		refreshGUI();
+		//refreshGUI();
 	}
 
 	// get stored Player Prefs if they exist, otherwise go with defaults set on gameObject
@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	// refresh all the GUI elements
-	void refreshGUI()
+	/*void refreshGUI()
 	{
 		// set the text elements of the UI
 		UIScore.text = "Score: " + score.ToString();
@@ -147,10 +147,10 @@ public class GameManager : MonoBehaviour
 				UIExtraLives[i].SetActive(false);
 			}
 		}
-	}
+	}*/
 
 	// public function to add points and update the gui and highscore player prefs accordingly
-	public void AddPoints(int amount)
+	/*public void AddPoints(int amount)
 	{
 		// increase score
 		score += amount;
@@ -164,14 +164,14 @@ public class GameManager : MonoBehaviour
 			highscore = score;
 			UIHighScore.text = "Highscore: " + score.ToString();
 		}
-	}
+	}*/
 
 	// public function to remove player life and reset game accordingly
 	public void ResetGame()
 	{
 		// remove life and update GUI
 		lives--;
-		refreshGUI();
+		//refreshGUI();
 
 		if (lives <= 0)
 		{ // no more lives

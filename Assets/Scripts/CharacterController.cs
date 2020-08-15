@@ -154,9 +154,9 @@ public class CharacterController : MonoBehaviour
 	}
 
 	public void CollectCoin(int amount)
-	{
+	{/*
 		if (GameManager.gm) // add the points through the game manager, if it is available
-			GameManager.gm.AddPoints(amount);
+			GameManager.gm.AddPoints(amount);*/
 	}
 
 	public void Respawn(Vector3 spawnloc)

@@ -6,7 +6,7 @@ public class Pickups : MonoBehaviour
 {
 	public int coinValue = 1;
 	public bool taken = false;
-	public GameObject explosion;
+	//public GameObject explosion;
 
 	// if the player touches the coin, it has not already been taken, and the player can move (not dead or victory)
 	// then take the coin
@@ -18,10 +18,10 @@ public class Pickups : MonoBehaviour
 			taken = true;
 
 			// if explosion prefab is provide, then instantiate it
-			if (explosion)
+			/*if (explosion)
 			{
 				Instantiate(explosion, transform.position, transform.rotation);
-			}
+			}*/
 
 			// do the player collect coin thing
 			other.gameObject.GetComponent<CharacterController>().CollectCoin(coinValue);
