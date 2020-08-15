@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; // include so we can load new scenes
 
 public class CharacterController : MonoBehaviour
 {
@@ -152,11 +153,41 @@ public class CharacterController : MonoBehaviour
 		_transform.localScale = localScale;
 	}
 
-    void DoJump()
+	public void CollectCoin(int amount)
+	{
+		if (GameManager.gm) // add the points through the game manager, if it is available
+			GameManager.gm.AddPoints(amount);
+	}
+
+	public void Respawn(Vector3 spawnloc)
+	{
+		UnFreezeMotion();
+		playerHealth = 1;
+		_transform.parent = null;
+		_transform.position = spawnloc;
+		_animator.SetTrigger("Respawn");
+	}
+
+	void DoJump()
 	{
 		//Reset current vertical motion to 0 prior to jump
 		_vy = 0f;
 		//Add a force in the up direction
 		_rigidbody.AddForce(new Vector2(0, jumpForce));
+	}
+
+	// do what needs to be done to freeze the player
+	void FreezeMotion()
+	{
+		playerCanMove = false;
+		_rigidbody.velocity = new Vector2(0, 0);
+		_rigidbody.isKinematic = true;
+	}
+
+	// do what needs to be done to unfreeze the player
+	void UnFreezeMotion()
+	{
+		playerCanMove = true;
+		_rigidbody.isKinematic = false;
 	}
 }
