@@ -190,4 +190,23 @@ public class CharacterController : MonoBehaviour
 		playerCanMove = true;
 		_rigidbody.isKinematic = false;
 	}
+
+	// if the player collides with a MovingPlatform, then make it a child of that platform
+	// so it will go for a ride on the MovingPlatform
+	void OnCollisionEnter2D(Collision2D other)
+	{
+		if (other.gameObject.tag == "MovingPlatform")
+		{
+			this.transform.parent = other.transform;
+		}
+	}
+
+	// if the player exits a collision with a moving platform, then unchild it
+	void OnCollisionExit2D(Collision2D other)
+	{
+		if (other.gameObject.tag == "MovingPlatform")
+		{
+			this.transform.parent = null;
+		}
+	}
 }
