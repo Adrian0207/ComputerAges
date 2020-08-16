@@ -209,4 +209,35 @@ public class CharacterController : MonoBehaviour
 			this.transform.parent = null;
 		}
 	}
+
+	public void FallDeath()
+	{
+		if (playerCanMove)
+		{
+			playerHealth = 0;
+			//PlaySound(fallSFX);
+			StartCoroutine(KillPlayer());
+		}
+	}
+
+	// coroutine to kill the player
+	IEnumerator KillPlayer()
+	{
+		if (playerCanMove)
+		{
+			// freeze the player
+			FreezeMotion();
+
+			// play the death animation
+			_animator.SetTrigger("Death");
+
+			// After waiting tell the GameManager to reset the game
+			yield return new WaitForSeconds(2.0f);
+
+			if (GameManager.gm) // if the gameManager is available, tell it to reset the game
+				GameManager.gm.ResetGame();
+			else // otherwise, just reload the current level
+				SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		}
+	}
 }

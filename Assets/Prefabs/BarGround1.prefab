@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5491389247887807785}
   - component: {fileID: 5834980888175370688}
   - component: {fileID: 43450827592231595}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: BarGround1
-  m_TagString: Ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,8 +68,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -325260395
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: -5256262549046456686, guid: ab1e5e8f552526341808821e4adadd85,
     type: 3}
