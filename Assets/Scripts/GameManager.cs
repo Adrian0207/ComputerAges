@@ -20,10 +20,10 @@ public class GameManager : MonoBehaviour
 
 	// UI elements to control
 	/*public Text UIScore;
-	public Text UIHighScore;
+	public Text UIHighScore;*/
 	public Text UILevel;
 	public GameObject[] UIExtraLives;
-	public GameObject UIGamePaused;*/
+	public GameObject UIGamePaused;
 
 	// private variables
 	GameObject _player;
@@ -49,13 +49,13 @@ public class GameManager : MonoBehaviour
 		{
 			if (Time.timeScale > 0f)
 			{
-				//UIGamePaused.SetActive(true); // this brings up the pause UI
+				UIGamePaused.SetActive(true); // this brings up the pause UI
 				Time.timeScale = 0f; // this pauses the game action
 			}
 			else
 			{
 				Time.timeScale = 1f; // this unpauses the game action (ie. back to normal)
-				//UIGamePaused.SetActive(false); // remove the pause UI
+				UIGamePaused.SetActive(false); // remove the pause UI
 			}
 		}
 	}
@@ -95,18 +95,18 @@ public class GameManager : MonoBehaviour
 
 		if (UIHighScore == null)
 			Debug.LogError("Need to set UIHighScore on Game Manager.");
-
+		*/
 		if (UILevel == null)
 			Debug.LogError("Need to set UILevel on Game Manager.");
 
 		if (UIGamePaused == null)
 			Debug.LogError("Need to set UIGamePaused on Game Manager.");
-		*/
+		
 		// get stored player prefs
 		refreshPlayerState();
 
 		// get the UI ready for the game
-		//refreshGUI();
+		refreshGUI();
 	}
 
 	// get stored Player Prefs if they exist, otherwise go with defaults set on gameObject
@@ -128,11 +128,11 @@ public class GameManager : MonoBehaviour
 	}
 
 	// refresh all the GUI elements
-	/*void refreshGUI()
+	void refreshGUI()
 	{
 		// set the text elements of the UI
-		UIScore.text = "Score: " + score.ToString();
-		UIHighScore.text = "Highscore: " + highscore.ToString();
+		//UIScore.text = "Score: " + score.ToString();
+		//UIHighScore.text = "Highscore: " + highscore.ToString();
 		UILevel.text = _scene.name;
 
 		// turn on the appropriate number of life indicators in the UI based on the number of lives left
@@ -147,7 +147,7 @@ public class GameManager : MonoBehaviour
 				UIExtraLives[i].SetActive(false);
 			}
 		}
-	}*/
+	}
 
 	// public function to add points and update the gui and highscore player prefs accordingly
 	/*public void AddPoints(int amount)
@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour
 	{
 		// remove life and update GUI
 		lives--;
-		//refreshGUI();
+		refreshGUI();
 
 		if (lives <= 0)
 		{ // no more lives
