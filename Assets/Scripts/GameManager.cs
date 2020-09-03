@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 using UnityEngine.UI; // include UI namespace so can reference UI elements
 using UnityEngine.SceneManagement; // include so we can manipulate SceneManager
-public class GameManager : MonoBehaviour
-{
+
+public class GameManager : MonoBehaviour {
+
 	// static reference to game manager so can be called from other scripts directly (not just through gameobject component)
 	public static GameManager gm;
 
@@ -19,8 +19,8 @@ public class GameManager : MonoBehaviour
 	public int lives = 3;
 
 	// UI elements to control
-	/*public Text UIScore;
-	public Text UIHighScore;*/
+	public Text UIScore;
+	public Text UIHighScore;
 	public Text UILevel;
 	public GameObject[] UIExtraLives;
 	public GameObject UIGamePaused;
@@ -31,8 +31,7 @@ public class GameManager : MonoBehaviour
 	Scene _scene;
 
 	// set things up here
-	void Awake()
-	{
+	void Awake () {
 		// setup reference to game manager
 		if (gm == null)
 			gm = this.GetComponent<GameManager>();
@@ -42,18 +41,13 @@ public class GameManager : MonoBehaviour
 	}
 
 	// game loop
-	void Update()
-	{
+	void Update() {
 		// if ESC pressed then pause the game
-		if (Input.GetKeyDown(KeyCode.Escape))
-		{
-			if (Time.timeScale > 0f)
-			{
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			if (Time.timeScale > 0f) {
 				UIGamePaused.SetActive(true); // this brings up the pause UI
 				Time.timeScale = 0f; // this pauses the game action
-			}
-			else
-			{
+			} else {
 				Time.timeScale = 1f; // this unpauses the game action (ie. back to normal)
 				UIGamePaused.SetActive(false); // remove the pause UI
 			}
@@ -61,13 +55,12 @@ public class GameManager : MonoBehaviour
 	}
 
 	// setup all the variables, the UI, and provide errors if things not setup properly.
-	void setupDefaults()
-	{
+	void setupDefaults() {
 		// setup reference to player
 		if (_player == null)
 			_player = GameObject.FindGameObjectWithTag("Player");
-
-		if (_player == null)
+		
+		if (_player==null)
 			Debug.LogError("Player not found in Game Manager");
 
 		// get current scene
@@ -77,30 +70,28 @@ public class GameManager : MonoBehaviour
 		_spawnLocation = _player.transform.position;
 
 		// if levels not specified, default to current level
-		if (levelAfterVictory == "")
-		{
+		if (levelAfterVictory=="") {
 			Debug.LogWarning("levelAfterVictory not specified, defaulted to current level");
 			levelAfterVictory = _scene.name;
 		}
-
-		if (levelAfterGameOver == "")
-		{
+		
+		if (levelAfterGameOver=="") {
 			Debug.LogWarning("levelAfterGameOver not specified, defaulted to current level");
 			levelAfterGameOver = _scene.name;
 		}
-		/*
+
 		// friendly error messages
-		if (UIScore == null)
-			Debug.LogError("Need to set UIScore on Game Manager.");
-
-		if (UIHighScore == null)
-			Debug.LogError("Need to set UIHighScore on Game Manager.");
-		*/
-		if (UILevel == null)
-			Debug.LogError("Need to set UILevel on Game Manager.");
-
-		if (UIGamePaused == null)
-			Debug.LogError("Need to set UIGamePaused on Game Manager.");
+		if (UIScore==null)
+			Debug.LogError ("Need to set UIScore on Game Manager.");
+		
+		if (UIHighScore==null)
+			Debug.LogError ("Need to set UIHighScore on Game Manager.");
+		
+		if (UILevel==null)
+			Debug.LogError ("Need to set UILevel on Game Manager.");
+		
+		if (UIGamePaused==null)
+			Debug.LogError ("Need to set UIGamePaused on Game Manager.");
 		
 		// get stored player prefs
 		refreshPlayerState();
@@ -110,14 +101,12 @@ public class GameManager : MonoBehaviour
 	}
 
 	// get stored Player Prefs if they exist, otherwise go with defaults set on gameObject
-	void refreshPlayerState()
-	{
+	void refreshPlayerState() {
 		lives = PlayerPrefManager.GetLives();
 
 		// special case if lives <= 0 then must be testing in editor, so reset the player prefs
-		if (lives <= 0)
-		{
-			PlayerPrefManager.ResetPlayerState(startLives, false);
+		if (lives <= 0) {
+			PlayerPrefManager.ResetPlayerState(startLives,false);
 			lives = PlayerPrefManager.GetLives();
 		}
 		score = PlayerPrefManager.GetScore();
@@ -128,78 +117,66 @@ public class GameManager : MonoBehaviour
 	}
 
 	// refresh all the GUI elements
-	void refreshGUI()
-	{
+	void refreshGUI() {
 		// set the text elements of the UI
-		//UIScore.text = "Score: " + score.ToString();
-		//UIHighScore.text = "Highscore: " + highscore.ToString();
+		UIScore.text = "Score: "+score.ToString();
+		UIHighScore.text = "Highscore: "+highscore.ToString ();
 		UILevel.text = _scene.name;
-
+		
 		// turn on the appropriate number of life indicators in the UI based on the number of lives left
-		for (int i = 0; i < UIExtraLives.Length; i++)
-		{
-			if (i < (lives - 1))
-			{ // show one less than the number of lives since you only typically show lifes after the current life in UI
+		for(int i=0;i<UIExtraLives.Length;i++) {
+			if (i<(lives-1)) { // show one less than the number of lives since you only typically show lifes after the current life in UI
 				UIExtraLives[i].SetActive(true);
-			}
-			else
-			{
+			} else {
 				UIExtraLives[i].SetActive(false);
 			}
 		}
 	}
 
 	// public function to add points and update the gui and highscore player prefs accordingly
-	/*public void AddPoints(int amount)
+	public void AddPoints(int amount)
 	{
 		// increase score
-		score += amount;
+		score+=amount;
 
 		// update UI
-		UIScore.text = "Score: " + score.ToString();
+		UIScore.text = "Score: "+score.ToString();
 
 		// if score>highscore then update the highscore UI too
-		if (score > highscore)
-		{
+		if (score>highscore) {
 			highscore = score;
-			UIHighScore.text = "Highscore: " + score.ToString();
+			UIHighScore.text = "Highscore: "+score.ToString();
 		}
-	}*/
+	}
 
 	// public function to remove player life and reset game accordingly
-	public void ResetGame()
-	{
+	public void ResetGame() {
 		// remove life and update GUI
 		lives--;
 		refreshGUI();
 
-		if (lives <= 0)
-		{ // no more lives
-		  // save the current player prefs before going to GameOver
-			PlayerPrefManager.SavePlayerState(score, highscore, lives);
+		if (lives<=0) { // no more lives
+			// save the current player prefs before going to GameOver
+			PlayerPrefManager.SavePlayerState(score,highscore,lives);
 
 			// load the gameOver screen
 			SceneManager.LoadScene(levelAfterGameOver);
-		}
-		else
-		{ // tell the player to respawn
-			_player.GetComponent<CharacterController>().Respawn(_spawnLocation);
+		} else { // tell the player to respawn
+			_player.GetComponent<CharacterController2D>().Respawn(_spawnLocation);
 		}
 	}
 
 	// public function for level complete
-	public void LevelCompete()
-	{
+	public void LevelCompete() {
 		// save the current player prefs before moving to the next level
-		PlayerPrefManager.SavePlayerState(score, highscore, lives);
+		PlayerPrefManager.SavePlayerState(score,highscore,lives);
 
 		// use a coroutine to allow the player to get fanfare before moving to next level
 		StartCoroutine(LoadNextLevel());
 	}
 
 	// load the nextLevel after delay
-	IEnumerator LoadNextLevel()
-	{
+	IEnumerator LoadNextLevel() {
 		yield return new WaitForSeconds(3.5f);
 		SceneManager.LoadScene(levelAfterVictory);
 	}
