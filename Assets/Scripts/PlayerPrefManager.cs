@@ -42,11 +42,9 @@ public static class PlayerPrefManager {
 
 
 	// story the current player state info into PlayerPrefs
-	public static void SavePlayerState(int score, int highScore, int lives) {
+	public static void SavePlayerState(int lives) {
 		// save currentscore and lives to PlayerPrefs for moving to next level
-		PlayerPrefs.SetInt("Score",score);
 		PlayerPrefs.SetInt("Lives",lives);
-		PlayerPrefs.SetInt("Highscore",highScore);
 	}
 	
 	// reset stored player state and variables back to defaults

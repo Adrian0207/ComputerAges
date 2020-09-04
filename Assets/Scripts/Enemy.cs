@@ -6,24 +6,16 @@ public class Enemy : MonoBehaviour {
 	public float moveSpeed = 4f;  // enemy move speed when moving
 	public int damageAmount = 10; // probably deal a lot of damage to kill player immediately
 
-	public GameObject stunnedCheck; // what gameobject is the stunnedCheck
-
 	public float stunnedTime = 3f;   // how long to wait at a waypoint
 	
-	public string stunnedLayer = "StunnedEnemy";  // name of the layer to put enemy on when stunned
 	public string playerLayer = "Player";  // name of the player layer to ignore collisions with when stunned
-	
-	public bool isStunned = false;  // flag for isStunned
-	
+		
 	public GameObject[] myWaypoints; // to define the movement waypoints
 	
 	public float waitAtWaypointTime = 1f;   // how long to wait at a waypoint
 	
 	public bool loopWaypoints = true; // should it loop through the waypoints
 	
-	// SFXs
-	public AudioClip stunnedSFX;
-	public AudioClip attackSFX;
 	
 	// private variables below
 	
@@ -31,7 +23,6 @@ public class Enemy : MonoBehaviour {
 	Transform _transform;
 	Rigidbody2D _rigidbody;
 	Animator _animator;
-	AudioSource _audio;
 	
 	// movement tracking
 	int _myWaypointIndex = 0; // used as index for My_Waypoints
@@ -43,7 +34,6 @@ public class Enemy : MonoBehaviour {
 	int _enemyLayer;
 
 	// store the layer number the enemy should be moved to when stunned
-	int _stunnedLayer;
 	
 	void Awake() {
 		// get a reference to the components we are going to be changing and store a reference for efficiency purposes
@@ -57,16 +47,6 @@ public class Enemy : MonoBehaviour {
 		if (_animator==null) // if Animator is missing
 			Debug.LogError("Animator component missing from this gameobject");
 		
-		_audio = GetComponent<AudioSource> ();
-		if (_audio==null) { // if AudioSource is missing
-			Debug.LogWarning("AudioSource component missing from this gameobject. Adding one.");
-			// let's just add the AudioSource component dynamically
-			_audio = gameObject.AddComponent<AudioSource>();
-		}
-
-		if (stunnedCheck==null) {
-			Debug.LogError("stunnedCheck child gameobject needs to be setup on the enemy");
-		}
 		
 		// setup moving defaults
 		_moveTime = 0f;
@@ -76,23 +56,14 @@ public class Enemy : MonoBehaviour {
 		_enemyLayer = this.gameObject.layer;
 
 		// determine the stunned enemy layer number
-		_stunnedLayer = LayerMask.NameToLayer(stunnedLayer);
-
-		// make sure collision are off between the playerLayer and the stunnedLayer
-		// which is where the enemy is placed while stunned
-		Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer(playerLayer), _stunnedLayer, true); 
 	}
 	
 	// if not stunned then move the enemy when time is > _moveTime
 	void Update () {
-		if (!isStunned)
-		{
-			if (Time.time >= _moveTime) {
-				EnemyMovement();
-			} else {
-				_animator.SetBool("Moving", false);
-			}
-		}
+
+		if (Time.time >= _moveTime) {
+			EnemyMovement();
+		} 
 	}
 	
 	// Move the enemy through its rigidbody based on its waypoints
@@ -126,7 +97,6 @@ public class Enemy : MonoBehaviour {
 				_moveTime = Time.time + waitAtWaypointTime;
 			} else {
 				// enemy is moving
-				_animator.SetBool("Moving", true);
 				
 				// Set the enemy's velocity to moveSpeed in the x direction.
 				_rigidbody.velocity = new Vector2(_transform.localScale.x * moveSpeed, _rigidbody.velocity.y);
@@ -153,15 +123,12 @@ public class Enemy : MonoBehaviour {
 	// Attack player
 	void OnTriggerEnter2D(Collider2D collision)
 	{
-		if ((collision.tag == "Player") && !isStunned)
+		if ((collision.tag == "Player"))
 		{
 			CharacterController2D player = collision.gameObject.GetComponent<CharacterController2D>();
 			if (player.playerCanMove) {
 				// Make sure the enemy is facing the player on attack
-				Flip(collision.transform.position.x-_transform.position.x);
-				
-				// attack sound
-				playSound(attackSFX);
+				Flip(collision.transform.position.x-_transform.position.x);		
 				
 				// stop moving
 				_rigidbody.velocity = new Vector2(0, 0);
@@ -192,50 +159,5 @@ public class Enemy : MonoBehaviour {
 		{
 			this.transform.parent = null;
 		}
-	}
-	
-	// play sound through the audiosource on the gameobject
-	void playSound(AudioClip clip)
-	{
-		_audio.PlayOneShot(clip);
-	}
-	
-	// setup the enemy to be stunned
-	public void Stunned()
-	{
-		if (!isStunned) 
-		{
-			isStunned = true;
-			
-			// provide the player with feedback that enemy is stunned
-			playSound(stunnedSFX);
-			_animator.SetTrigger("Stunned");
-			
-			// stop moving
-			_rigidbody.velocity = new Vector2(0, 0);
-			
-			// switch layer to stunned layer so no collisions with the player while stunned
-			this.gameObject.layer = _stunnedLayer;
-			stunnedCheck.layer = _stunnedLayer;
-
-			// start coroutine to stand up eventually
-			StartCoroutine (Stand ());
-		}
-	}
-	
-	// coroutine to unstun the enemy and stand back up
-	IEnumerator Stand()
-	{
-		yield return new WaitForSeconds(stunnedTime); 
-		
-		// no longer stunned
-		isStunned = false;
-		
-		// switch layer back to regular layer for regular collisions with the player
-		this.gameObject.layer = _enemyLayer;
-		stunnedCheck.layer = _enemyLayer;
-		
-		// provide the player with feedback
-		_animator.SetTrigger("Stand");
 	}
 }
