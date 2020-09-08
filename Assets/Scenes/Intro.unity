@@ -852,6 +852,11 @@ PrefabInstance:
 
         to DOUBLE jump'
       objectReference: {fileID: 0}
+    - target: {fileID: 6214220500958309111, guid: 160589e9fb4e5e945b405c479e8ff40a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 160589e9fb4e5e945b405c479e8ff40a, type: 3}
 --- !u!1 &236942190
@@ -2009,14 +2014,14 @@ RectTransform:
   m_GameObject: {fileID: 611135016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 38426183}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 14.1}
+  m_AnchoredPosition: {x: 0, y: 10.7}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &611135018
@@ -2032,7 +2037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.64705884}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2439,6 +2444,11 @@ PrefabInstance:
         type: 3}
       propertyPath: speach
       value: "Collect all \n5 Punch Cards \nto finish the level"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214220500958309111, guid: 160589e9fb4e5e945b405c479e8ff40a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 160589e9fb4e5e945b405c479e8ff40a, type: 3}
@@ -3476,7 +3486,7 @@ RectTransform:
   m_GameObject: {fileID: 1214962919}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children: []
   m_Father: {fileID: 1912377784}
   m_RootOrder: 3
@@ -3499,7 +3509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3529412, g: 0.3529412, b: 0.3529412, a: 0.64705884}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4618,7 +4628,7 @@ RectTransform:
   m_GameObject: {fileID: 1719670937}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children: []
   m_Father: {fileID: 1912377784}
   m_RootOrder: 2
@@ -4641,7 +4651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.64705884}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4922,7 +4932,7 @@ PrefabInstance:
     - target: {fileID: 6214220500958309111, guid: 160589e9fb4e5e945b405c479e8ff40a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.7
+      value: -5.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 160589e9fb4e5e945b405c479e8ff40a, type: 3}
@@ -6244,11 +6254,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 700463268044086835, guid: 160589e9fb4e5e945b405c479e8ff40a,
-        type: 3}
-      propertyPath: m_Text
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 898874544748856565, guid: 160589e9fb4e5e945b405c479e8ff40a,
         type: 3}
