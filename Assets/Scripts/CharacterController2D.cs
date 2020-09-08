@@ -271,9 +271,9 @@ public class CharacterController2D : MonoBehaviour {
 	// public function on victory over the level
 	public void Victory() {
 		PlaySound(victorySFX);
+		Destroy(this.gameObject);
 		FreezeMotion ();
-		_animator.SetTrigger("Victory");
-
+		
 		if (GameManager.gm) // do the game manager level compete stuff, if it is available
 			GameManager.gm.LevelCompete();
 	}

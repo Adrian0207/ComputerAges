@@ -27,7 +27,6 @@ public class Coin : MonoBehaviour {
 
 			// destroy the coin
 			Destroy(this.gameObject);
-			GameManager.gm.countPunchCards++;
 		}
 	}
 

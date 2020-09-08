@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour {
 	// UI elements to control;
 	public Text UILevel;
 	public GameObject[] UIExtraLives;
+	public GameObject[] UIPunchCards;
 	public GameObject UIGamePaused;
 
 	// private variables
@@ -111,10 +112,14 @@ public class GameManager : MonoBehaviour {
 		UILevel.text = _scene.name;
 		
 		// turn on the appropriate number of life indicators in the UI based on the number of lives left
-		for(int i=0;i<UIExtraLives.Length;i++) {
-			if (i<(lives-1)) { // show one less than the number of lives since you only typically show lifes after the current life in UI
+		for(int i=0;i<UIExtraLives.Length;i++) 
+		{
+			if (i<(lives-1)) 
+			{ // show one less than the number of lives since you only typically show lifes after the current life in UI
 				UIExtraLives[i].SetActive(true);
-			} else {
+			} 
+			else 
+			{
 				UIExtraLives[i].SetActive(false);
 			}
 		}
@@ -124,8 +129,19 @@ public class GameManager : MonoBehaviour {
 	public void AddPoints(int amount)
 	{
 		// increase score
-
+		countPunchCards+=amount;
 		// update UI
+		for (int i = 0; i < UIPunchCards.Length; i++)
+		{
+			if (i < (countPunchCards))
+			{ // show one less than the number of lives since you only typically show lifes after the current life in UI
+				UIPunchCards[i].SetActive(true);
+			}
+			else
+			{
+				UIPunchCards[i].SetActive(false);
+			}
+		}
 		return;
 	}
 
