@@ -1,16 +1,28 @@
 fileFormatVersion: 2
-guid: e4f40e47cd4465646a500b9b3c135637
+guid: ccb4bdc2952e0104c9f0e01ba2ec01fd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8191739510646017925
-    second: buttons_0
+      213: 2189510010676529607
+    second: Portal_0
   - first:
-      213: 3713549098536957005
-    second: buttons_1
+      213: -2655743518466041805
+    second: Portal_1
   - first:
-      213: -480254276019886394
-    second: buttons_2
+      213: 5763079367947051459
+    second: Portal_2
+  - first:
+      213: 4595544271858990753
+    second: Portal_3
+  - first:
+      213: -4595522883015475761
+    second: Portal_4
+  - first:
+      213: 7871413547306426770
+    second: Portal_5
+  - first:
+      213: 4576928675844355861
+    second: Portal_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -54,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 8
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -120,13 +132,76 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: buttons_0
+      name: Portal_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c9498211c3b26e10800000000000000
+      internalID: 2189510010676529607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Portal_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33819473757e42bd0800000000000000
+      internalID: -2655743518466041805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Portal_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c1eddaa6229aff40800000000000000
+      internalID: 5763079367947051459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Portal_3
       rect:
         serializedVersion: 2
         x: 0
         y: 32
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +209,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7079671158115e80800000000000000
-      internalID: -8191739510646017925
+      spriteID: 1ae7cb1ca27a6cf30800000000000000
+      internalID: 4595544271858990753
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buttons_1
+      name: Portal_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +230,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d44744ada3d298330800000000000000
-      internalID: 3713549098536957005
+      spriteID: fcdfea8394c6930c0800000000000000
+      internalID: -4595522883015475761
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buttons_2
+      name: Portal_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 291a56faae0ec3d60800000000000000
+      internalID: 7871413547306426770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Portal_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,8 +272,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c6e8fbc74bc559f0800000000000000
-      internalID: -480254276019886394
+      spriteID: 517700e8164848f30800000000000000
+      internalID: 4576928675844355861
       vertices: []
       indices: 
       edges: []

@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
 	// game performance
 	public int startLives = 3;
 	public int lives = 3;
+	public int countPunchCards = 0;
 
 	// UI elements to control;
 	public Text UILevel;
